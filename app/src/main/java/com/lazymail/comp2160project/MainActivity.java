@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
 
+import com.lazymail.comp2160project.PlanetData;
+
 public class MainActivity extends AppCompatActivity {
     Button camera;
     VideoView videoView;
@@ -36,4 +38,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void activityPlanetData(View view) {
+        Intent actPD = new Intent(this, PlanetData.class);
+        startActivity(actPD);
+    }
+
 }
