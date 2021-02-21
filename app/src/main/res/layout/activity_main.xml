@@ -4,6 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    android:background="@drawable/space_night_bg">
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/camera_btt"
+        android:layout_width="138dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="208dp"
+        android:text="@string/camera_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/list_planets_btt"
+        android:layout_width="138dp"
+        android:layout_height="84dp"
+        android:text="@string/planet_list_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camera_btt"
+        app:layout_constraintVertical_bias="0.132" />
+=======
+>>>>>>> Stashed changes
     tools:context=".MainActivity">
 
     <TextView
@@ -15,4 +45,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> ca815192880c93f96a60a7f993c1924dfe54a3ba
+>>>>>>> Stashed changes
 </androidx.constraintlayout.widget.ConstraintLayout>
