@@ -1,4 +1,4 @@
-package com.example.comp_2160_project;
+package com.lazymail.comp2160project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
