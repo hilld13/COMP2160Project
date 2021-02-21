@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">COMP2160 Project</string>
+    <string name="camera_text">Camera</string>
+    <string name="planets_list_text">Planets</string>
 </resources>
