@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.VideoView;
 
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     VideoView videoView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window. FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         openCamera();
