@@ -1,7 +1,7 @@
 [
  {
    "Body": "Sol",
-   "Parent Body": "Sgr A*",
+   "ParentBody": "Sgr A*",
    "Mass": 1.9885e+30,
    "Volume": 1412000000000000000,
    "MeanRadius": 695700,
@@ -12,7 +12,7 @@
  },
  {
    "Body": "Mercury",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 3.3011e+23,
    "Volume": 60830000000,
    "MeanRadius": 2439.7,
@@ -23,7 +23,7 @@
  },
  {
    "Body": "Venus",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 4.8675e+24,
    "Volume": 928430000000,
    "MeanRadius": 6051.8,
@@ -34,7 +34,7 @@
  },
  {
    "Body": "Earth",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 5.9724e+24,
    "Volume": 1083210000000,
    "MeanRadius": 6371,
@@ -45,7 +45,7 @@
  },
  {
    "Body": "Earth",
-   "Parent Body": "Earth",
+   "ParentBody": "Earth",
    "Mass": 7.346e+22,
    "Volume": 21968000000,
    "MeanRadius": 1737.4,
@@ -56,7 +56,7 @@
  },
  {
    "Body": "Mars",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 6.4171e+23,
    "Volume": 163180000000,
    "MeanRadius": 3389.5,
@@ -67,7 +67,7 @@
  },
  {
    "Body": "Phobos",
-   "Parent Body": "Mars",
+   "ParentBody": "Mars",
    "Mass": 10600000000000000,
    "Volume": null,
    "MeanRadius": 9378,
@@ -78,7 +78,7 @@
  },
  {
    "Body": "Deimos",
-   "Parent Body": "Mars",
+   "ParentBody": "Mars",
    "Mass": 2400000000000000,
    "Volume": null,
    "MeanRadius": 23459,
@@ -89,7 +89,7 @@
  },
  {
    "Body": "Ceres",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 939300000000000000000,
    "Volume": null,
    "MeanRadius": 939,
@@ -100,7 +100,7 @@
  },
  {
    "Body": "Jupiter",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 1.89819e+27,
    "Volume": 1431280000000000,
    "MeanRadius": 69911,
@@ -111,7 +111,7 @@
  },
  {
    "Body": "Io",
-   "Parent Body": "Jupiter",
+   "ParentBody": "Jupiter",
    "Mass": 8.932e+22,
    "Volume": null,
    "MeanRadius": 1821.5,
@@ -122,7 +122,7 @@
  },
  {
    "Body": "Europa",
-   "Parent Body": "Jupiter",
+   "ParentBody": "Jupiter",
    "Mass": 4.8e+22,
    "Volume": null,
    "MeanRadius": 1560.8,
@@ -133,7 +133,7 @@
  },
  {
    "Body": "Ganymede",
-   "Parent Body": "Jupiter",
+   "ParentBody": "Jupiter",
    "Mass": 1.4819e+23,
    "Volume": null,
    "MeanRadius": 2631.2,
@@ -144,7 +144,7 @@
  },
  {
    "Body": "Callisto",
-   "Parent Body": "Jupiter",
+   "ParentBody": "Jupiter",
    "Mass": 1.0759e+23,
    "Volume": null,
    "MeanRadius": 2410.3,
@@ -155,7 +155,7 @@
  },
  {
    "Body": "Saturn",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 5.6834e+26,
    "Volume": 827130000000000,
    "MeanRadius": 58232,
@@ -166,7 +166,7 @@
  },
  {
    "Body": "Mimas",
-   "Parent Body": "Saturn",
+   "ParentBody": "Saturn",
    "Mass": 37900000000000000000,
    "Volume": null,
    "MeanRadius": 199,
@@ -177,7 +177,7 @@
  },
  {
    "Body": "Enceladus",
-   "Parent Body": "Saturn",
+   "ParentBody": "Saturn",
    "Mass": 108000000000000000000,
    "Volume": null,
    "MeanRadius": 249,
@@ -188,7 +188,7 @@
  },
  {
    "Body": "Tethys",
-   "Parent Body": "Saturn",
+   "ParentBody": "Saturn",
    "Mass": 618000000000000000000,
    "Volume": null,
    "MeanRadius": 531,
@@ -199,7 +199,7 @@
  },
  {
    "Body": "Dione",
-   "Parent Body": "Saturn",
+   "ParentBody": "Saturn",
    "Mass": 1.1e+21,
    "Volume": null,
    "MeanRadius": 561,
@@ -210,7 +210,7 @@
  },
  {
    "Body": "Rhea",
-   "Parent Body": "Saturn",
+   "ParentBody": "Saturn",
    "Mass": 2.31e+21,
    "Volume": null,
    "MeanRadius": 763,
@@ -221,7 +221,7 @@
  },
  {
    "Body": "Titan",
-   "Parent Body": "Saturn",
+   "ParentBody": "Saturn",
    "Mass": 1.3455e+23,
    "Volume": null,
    "MeanRadius": 2575,
@@ -232,7 +232,7 @@
  },
  {
    "Body": "Hyperion",
-   "Parent Body": "Saturn",
+   "ParentBody": "Saturn",
    "Mass": 5600000000000000000,
    "Volume": null,
    "MeanRadius": 139,
@@ -243,7 +243,7 @@
  },
  {
    "Body": "Iapetus",
-   "Parent Body": "Saturn",
+   "ParentBody": "Saturn",
    "Mass": 1.81e+21,
    "Volume": null,
    "MeanRadius": 734,
@@ -254,7 +254,7 @@
  },
  {
    "Body": "Uranus",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 8.6813e+25,
    "Volume": 68330000000000,
    "MeanRadius": 25362,
@@ -265,7 +265,7 @@
  },
  {
    "Body": "Miranda",
-   "Parent Body": "Uranus",
+   "ParentBody": "Uranus",
    "Mass": 66000000000000000000,
    "Volume": null,
    "MeanRadius": 235.7,
@@ -276,7 +276,7 @@
  },
  {
    "Body": "Ariel",
-   "Parent Body": "Uranus",
+   "ParentBody": "Uranus",
    "Mass": 1.29e+21,
    "Volume": null,
    "MeanRadius": 578.9,
@@ -287,7 +287,7 @@
  },
  {
    "Body": "Umbriel",
-   "Parent Body": "Uranus",
+   "ParentBody": "Uranus",
    "Mass": 1.22e+21,
    "Volume": null,
    "MeanRadius": 584.7,
@@ -298,7 +298,7 @@
  },
  {
    "Body": "Titania",
-   "Parent Body": "Uranus",
+   "ParentBody": "Uranus",
    "Mass": 3.42e+21,
    "Volume": null,
    "MeanRadius": 788.9,
@@ -309,7 +309,7 @@
  },
  {
    "Body": "Oberon",
-   "Parent Body": "Uranus",
+   "ParentBody": "Uranus",
    "Mass": 2.88e+21,
    "Volume": null,
    "MeanRadius": 761.4,
@@ -320,7 +320,7 @@
  },
  {
    "Body": "Neptune",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 1.02413e+26,
    "Volume": 62540000000000,
    "MeanRadius": 24622,
@@ -331,7 +331,7 @@
  },
  {
    "Body": "Naiad",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 200000000000000000,
    "Volume": null,
    "MeanRadius": 34.7,
@@ -342,7 +342,7 @@
  },
  {
    "Body": "Thalassa",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 400000000000000000,
    "Volume": null,
    "MeanRadius": 43.3,
@@ -353,7 +353,7 @@
  },
  {
    "Body": "Despina",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 2000000000000000000,
    "Volume": null,
    "MeanRadius": 76,
@@ -364,7 +364,7 @@
  },
  {
    "Body": "Galatea",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 4000000000000000000,
    "Volume": null,
    "MeanRadius": 88.7,
@@ -375,7 +375,7 @@
  },
  {
    "Body": "Larissa",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 5000000000000000000,
    "Volume": null,
    "MeanRadius": 98,
@@ -386,7 +386,7 @@
  },
  {
    "Body": "Hippocamp",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 30000000000000000,
    "Volume": null,
    "MeanRadius": 17,
@@ -397,7 +397,7 @@
  },
  {
    "Body": "Proteus",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 50000000000000000000,
    "Volume": null,
    "MeanRadius": 210,
@@ -408,7 +408,7 @@
  },
  {
    "Body": "Triton",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 2.14e+22,
    "Volume": null,
    "MeanRadius": 1353.4,
@@ -419,7 +419,7 @@
  },
  {
    "Body": "Nereid",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 30000000000000000000,
    "Volume": null,
    "MeanRadius": 170,
@@ -430,7 +430,7 @@
  },
  {
    "Body": "Halimede",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 200000000000000000,
    "Volume": null,
    "MeanRadius": 30,
@@ -441,7 +441,7 @@
  },
  {
    "Body": "Sao",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 100000000000000000,
    "Volume": null,
    "MeanRadius": 20,
@@ -452,7 +452,7 @@
  },
  {
    "Body": "Laomedeia",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 100000000000000000,
    "Volume": null,
    "MeanRadius": 20,
@@ -463,7 +463,7 @@
  },
  {
    "Body": "Neso",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 200000000000000000,
    "Volume": null,
    "MeanRadius": 30,
@@ -474,7 +474,7 @@
  },
  {
    "Body": "Psamathe",
-   "Parent Body": "Neptune",
+   "ParentBody": "Neptune",
    "Mass": 20000000000000000,
    "Volume": null,
    "MeanRadius": 20,
@@ -485,7 +485,7 @@
  },
  {
    "Body": "Pluto",
-   "Parent Body": "Sol",
+   "ParentBody": "Sol",
    "Mass": 1.303e+22,
    "Volume": 7020000000,
    "MeanRadius": 1188,
@@ -496,7 +496,7 @@
  },
  {
    "Body": "Charon",
-   "Parent Body": "Pluto",
+   "ParentBody": "Pluto",
    "Mass": 1.586e+21,
    "Volume": null,
    "MeanRadius": 606,
@@ -507,7 +507,7 @@
  },
  {
    "Body": "Syx",
-   "Parent Body": "Pluto",
+   "ParentBody": "Pluto",
    "Mass": null,
    "Volume": 11,
    "MeanRadius": null,
@@ -518,7 +518,7 @@
  },
  {
    "Body": "Nix",
-   "Parent Body": "Pluto",
+   "ParentBody": "Pluto",
    "Mass": null,
    "Volume": 37,
    "MeanRadius": null,
@@ -529,7 +529,7 @@
  },
  {
    "Body": "Kerberos",
-   "Parent Body": "Pluto",
+   "ParentBody": "Pluto",
    "Mass": null,
    "Volume": 13,
    "MeanRadius": null,
@@ -540,7 +540,7 @@
  },
  {
    "Body": "Hydra",
-   "Parent Body": "Pluto",
+   "ParentBody": "Pluto",
    "Mass": null,
    "Volume": 39,
    "MeanRadius": null,
