@@ -2,4 +2,11 @@
     <string name="app_name">COMP2160 Project</string>
     <string name="camera_text">Camera</string>
     <string name="planets_list_text">Planets</string>
+    <string-array name="testList">
+        <item>"Item 1"</item>
+        <item>"Item 2"</item>
+        <item>"Item 3"</item>
+        <item>"Item 4"</item>
+        <item>"Item 5"</item>
+    </string-array>
 </resources>
