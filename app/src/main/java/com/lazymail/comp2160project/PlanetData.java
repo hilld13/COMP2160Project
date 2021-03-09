@@ -11,6 +11,7 @@ import android.widget.ListView;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,40 +21,46 @@ import org.json.simple.parser.JSONParser;
 
 public class PlanetData extends AppCompatActivity {
     //Declaring variables.
-    JSONArray jsonArray = new JSONArray(); //contains data of planets.
     ArrayList<String> arrayList = new ArrayList<String>();
     ListView listView;
     ArrayAdapter<String> arrayAdapter;
+    JSONParser parser = new JSONParser();
+    JSONArray jsonArray;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planet_data);
-        arrayList.add("1");
-        arrayList.add("2");
-        arrayList.add("3");
+        readJson();
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayList);
         listView = (ListView) findViewById(R.id.listView_planets);
         listView.setAdapter(arrayAdapter);
     }
 
+    public String LoadData(String inFile) {
+        String tContents = "";
 
-    //READ JSON ARRAY
+        try {
+            InputStream stream = getAssets().open(inFile);
+
+            int size = stream.available();
+            byte[] buffer = new byte[size];
+            stream.read(buffer);
+            stream.close();
+            tContents = new String(buffer);
+        } catch (IOException e) {
+            // Handle exceptions here
+        }
+        return tContents;
+    }
+    //FETCH JSON FILE.
     public void readJson(){
         try {
-            FileReader reader = new FileReader("/src/main/assets/planetdata.json");
-            JSONParser parser = new JSONParser();
-            JSONArray jsonArray = (JSONArray) parser.parse(reader);
-
+            jsonArray = new JSONArray(LoadData("planetdata.json"));
             for (int i = 0; i < jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                     arrayList.add(jsonObject.getString("Body"));
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
-        } catch (org.json.simple.parser.ParseException e) {
-            e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
