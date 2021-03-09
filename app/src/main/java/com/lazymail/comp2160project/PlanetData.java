@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,8 @@ import org.json.simple.parser.JSONParser;
 
 public class PlanetData extends AppCompatActivity {
     //Declaring variables.
-    ArrayList<String> arrayList = new ArrayList<String>();
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<Planet> arrayPlanet = new ArrayList<>();
     ListView listView;
     ArrayAdapter<String> arrayAdapter;
     JSONParser parser = new JSONParser();
@@ -31,12 +33,16 @@ public class PlanetData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planet_data);
+        arrayList.add("dummy01");
+        arrayList.add("dummy02");
         readJson();
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayList);
         listView = (ListView) findViewById(R.id.listView_planets);
         listView.setAdapter(arrayAdapter);
     }
 
+
+    // LOAD ASSET (JSON FILE) & GET STRING FORMAT FROM IT
     public String LoadData(String inFile) {
         String tContents = "";
 
@@ -53,14 +59,22 @@ public class PlanetData extends AppCompatActivity {
         }
         return tContents;
     }
-    //FETCH JSON FILE.
+    //CONVERT JSON ARRAY INTO ARRAY OF PLANET & ARRAY OF STRING FOR DISPLAYING.
     public void readJson(){
         try {
             jsonArray = new JSONArray(LoadData("planetdata.json"));
             for (int i = 0; i < jsonArray.length(); i++){
+
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    arrayList.add(jsonObject.getString("Body"));
+              //  arrayList.add(jsonObject.getString("Body"));
+
+                arrayPlanet.add(new Planet(jsonObject));
+                arrayList.add( arrayPlanet.get(arrayPlanet.size()-1).toString());
+
+
             }
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
