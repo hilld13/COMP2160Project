@@ -22,12 +22,24 @@
         android:id="@+id/list_planets_btt"
         android:layout_width="138dp"
         android:layout_height="84dp"
-        android:text="@string/planets_list_text"
+        android:layout_marginTop="40dp"
         android:onClick="activityPlanetData"
+        android:text="@string/planets_list_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camera_btt" />
+
+    <Button
+        android:id="@+id/btnEphCalc"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="180dp"
+        android:onClick="activityEphemerisCalculator"
+        android:text="Ephemeris Calculator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/camera_btt"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintTop_toBottomOf="@+id/list_planets_btt" />
 </androidx.constraintlayout.widget.ConstraintLayout>
