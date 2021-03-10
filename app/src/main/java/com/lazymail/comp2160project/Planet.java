@@ -33,7 +33,7 @@ public class Planet {
     }
     @Override
     public String toString(){
-        return    "\n"+ body
+        return  "\n"+ body
                 + "\n"+parentBody
                 + "\n" +mass
                 + "\n" +volume

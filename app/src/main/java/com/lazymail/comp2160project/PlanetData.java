@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -33,15 +34,16 @@ public class PlanetData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planet_data);
-        arrayList.add("dummy01");
-        arrayList.add("dummy02");
         readJson();
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayList);
         listView = (ListView) findViewById(R.id.listView_planets);
         listView.setAdapter(arrayAdapter);
+
     }
+    //TO SEE DETAILS OF PLANENTS
+    public void aboutPlanet(){
 
-
+    }
     // LOAD ASSET (JSON FILE) & GET STRING FORMAT FROM IT
     public String LoadData(String inFile) {
         String tContents = "";
@@ -64,20 +66,15 @@ public class PlanetData extends AppCompatActivity {
         try {
             jsonArray = new JSONArray(LoadData("planetdata.json"));
             for (int i = 0; i < jsonArray.length(); i++){
-
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-              //  arrayList.add(jsonObject.getString("Body"));
-
                 arrayPlanet.add(new Planet(jsonObject));
-                arrayList.add( arrayPlanet.get(arrayPlanet.size()-1).toString());
-
-
+                arrayList.add( jsonObject.getString("Body"));
             }
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+    // TRANSFER TO INFO PAGE ONCLIK
+
 }
 
