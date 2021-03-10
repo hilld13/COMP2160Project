@@ -2,4 +2,12 @@
     <string name="app_name">COMP2160 Project</string>
     <string name="camera_text">Camera</string>
     <string name="planets_list_text">Planets</string>
+    <string name="azimuth">Azimuth</string>
+    <string name="elevation">Elevation</string>
+    <string name="calc_az_el">Calculate Az/El</string>
+    <string name="rt_ascen">Right Ascension</string>
+    <string name="longitude_edittext">Longitude (E/W)</string>
+    <string name="latitude_edittext">Latitude (N/S)</string>
+    <string name="enter_the_lat_and_long_of_the_observer">Enter the Lat and Long of the observer</string>
+    <string name="declination_text">Declination</string>
 </resources>
