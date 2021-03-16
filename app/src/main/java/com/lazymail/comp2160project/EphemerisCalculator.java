@@ -98,8 +98,8 @@ public class EphemerisCalculator extends AppCompatActivity {
         // calc RA/D
         int ret = sw.swe_calc_ut(sd.getJulDay(), planet, flags, xp, serr);
 
-        txtRtAscension.setText("RA: " + xp[0]);
-        txtDeclination.setText(" D: " + xp[1]);
+        txtRtAscension.setText(String.format("Right Ascension: %.2f", xp[0]));
+        txtDeclination.setText(String.format("Declination: %.2f", xp[1]));
 
         // convert to Az/El
         xin[0] = xp[0];
