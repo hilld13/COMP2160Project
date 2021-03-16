@@ -48,6 +48,7 @@ public class EphemerisCalculator extends AppCompatActivity {
     private TextView txtDeclination;
     private TextView txtLatitude;
     private TextView txtLongitude;
+    private TextView txtGeneralOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,8 @@ public class EphemerisCalculator extends AppCompatActivity {
         txtDeclination = (TextView) findViewById(R.id.textDeclination);
         txtLatitude = (TextView) findViewById(R.id.editTextLatitude);
         txtLongitude = (TextView) findViewById(R.id.editTextLongitude);
+
+        txtGeneralOutput = (TextView) findViewById(R.id.generalOutputTextView);
 
         txtLatitude.setText("" + latitude);
         txtLongitude.setText("" + longitude);
@@ -80,12 +83,7 @@ public class EphemerisCalculator extends AppCompatActivity {
         String s = "";
         Calendar cal = Calendar.getInstance(java.util.TimeZone.getTimeZone("Etc/UTC"), Locale.CANADA);
 
-        int flags =
-                SweConst.SEFLG_TOPOCTR |    // topocentric !!!!
-                        SweConst.SEFLG_SWIEPH |         // slow and least accurate calculation method
-                        SweConst.SEFLG_SIDEREAL |       // sidereal zodiac
-                        SweConst.SEFLG_NONUT |          // will be set automatically for sidereal calculations, if not set here
-                        SweConst.SEFLG_SPEED;           // to determine retrograde vs. direct motion
+        int flags = SweConst.SEFLG_EQUATORIAL | SweConst.SEFLG_SWIEPH | SweConst.SEFLG_SPEED;
         boolean retrograde = false;
 
         SwissEph sw = new SwissEph(getApplicationContext().getFilesDir() + File.separator + "/ephe");
@@ -101,6 +99,7 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         sd = new SweDate(year, month, day, hour);
         sw.swe_set_topo(longitude, latitude, 0);
+
         // set body (hard code for now to Mars)
         planet = SweConst.SE_MARS;
 
@@ -109,8 +108,6 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         txtRtAscension.setText("RA: " + xp[0]);
         txtDeclination.setText(" D: " + xp[1]);
-        //txtMessages.setText("serr: " + serr);
-        //txtMessages.setText("" + cal.getTimeZone());
 
         // convert to Az/El
         xin[0] = xp[0];
@@ -121,8 +118,11 @@ public class EphemerisCalculator extends AppCompatActivity {
         geopos[2] = 0;
 
         sw.swe_azalt(sd.getJulDay(), SweConst.SE_EQU2HOR, geopos, 0, 20, xin, xaz);
+        azimuth = xaz[0];
+        elevation = xaz[1];
 
-        txtElevation.setText("Elevation: " + xaz[1]);
-        txtAzimuth.setText("Azimuth: " + xaz[0]);
+        txtElevation.setText("Elevation: " + elevation);
+        txtAzimuth.setText("Azimuth: " + azimuth);
+        txtGeneralOutput.setText("" + serr);
     }
 }
