@@ -32,10 +32,6 @@ public class EphemerisCalculator extends AppCompatActivity {
 
     private int planet;
     private SweDate sd;
-    //private SDate utdate;
-
-    //private SwissEph sw = new SwissEph();   // SwissEph(java.lang.String path); path is the location of the ephemeris data files
-    //private SwissEph sw = new SwissEph(getApplicationContext().getFilesDir() + File.separator + "ephe");     // crashes
 
     double[] xp = new double[6];
     double[] xaz = new double[3];
@@ -68,13 +64,6 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         txtLatitude.setText("" + latitude);
         txtLongitude.setText("" + longitude);
-
-        //txtMessages.setText(getCacheDir().toString());  // /data/user/0/ca.lazymail.ephemeristest2/cache
-        //txtMessages.setText(getApplication().getAssets().toString());  // android.content.res.AssetManager@82e57c9
-        //txtMessages.setText(getBaseContext().getAssets().toString()); // android.content.res.AssetManager@82e57c9
-        //txtMessages.setText(getDataDir().toString()); // /data/user/ca.lazymail.ephemeristest2
-        //txtMessages.setText(getDataDir().toString()); // /data/user/ca.lazymail.ephemeristest2
-        //txtMessages.setText(getApplicationContext().getFilesDir() + File.separator + "ephe");   // /data/user/ca.lazymail.ephemeristest2/files/ephe
 
     }
 
