@@ -86,6 +86,9 @@ public class EphemerisCalculator extends AppCompatActivity {
         int flags = SweConst.SEFLG_EQUATORIAL | SweConst.SEFLG_SWIEPH | SweConst.SEFLG_SPEED;
         boolean retrograde = false;
 
+        String azString;
+        String elString;
+
         SwissEph sw = new SwissEph(getApplicationContext().getFilesDir() + File.separator + "/ephe");
 
         // Set date/time
@@ -113,16 +116,26 @@ public class EphemerisCalculator extends AppCompatActivity {
         xin[0] = xp[0];
         xin[1] = xp[1];
 
-        geopos[0] = latitude;
-        geopos[1] = longitude;
+        geopos[0] = longitude;
+        geopos[1] = latitude;
         geopos[2] = 0;
 
         sw.swe_azalt(sd.getJulDay(), SweConst.SE_EQU2HOR, geopos, 0, 20, xin, xaz);
-        azimuth = xaz[0];
+        if (latitude > 0) {
+            azimuth = xaz[0] + 180.0;      // azimuth is incorrectly calculated as south being 0 instead of 180.
+        } else {
+            azimuth = xaz[0];           // I don't know if I need to fix azimuth or the southern hemisphere.
+        }
         elevation = xaz[1];
 
-        txtElevation.setText("Elevation: " + elevation);
-        txtAzimuth.setText("Azimuth: " + azimuth);
-        txtGeneralOutput.setText("" + serr);
+        azString = String.format("Azimuth: %.2f", azimuth);
+        elString = String.format("Elevation: %.2f", elevation);
+
+        txtAzimuth.setText(azString);
+        txtElevation.setText(elString);
+
+        //txtGeneralOutput.setText("" + serr);
+
+        sw.swe_close();
     }
 }
