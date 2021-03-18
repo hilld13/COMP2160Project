@@ -13,31 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     Button camera;
     VideoView videoView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window. FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        openCamera();
-    }
-
-    // To access to camera
-    protected void openCamera(){
-        camera = (Button) findViewById(R.id.camera_btt);
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent();
-                    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivity(intent);
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     public void activityPlanetData(View view) {
@@ -48,5 +30,10 @@ public class MainActivity extends AppCompatActivity {
     public void activityEphemerisCalculator(View view) {
         Intent actEC = new Intent(this, EphemerisCalculator.class);
         startActivity(actEC);
+    }
+
+    public void activityCompass(View view) {
+        Intent actC = new Intent(this, Compass.class);
+        startActivity(actC);
     }
 }

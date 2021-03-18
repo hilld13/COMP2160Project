@@ -8,11 +8,12 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/camera_btt"
+        android:id="@+id/compass_btt"
         android:layout_width="138dp"
         android:layout_height="84dp"
         android:layout_marginTop="208dp"
-        android:text="@string/camera_text"
+        android:onClick="activityCompass"
+        android:text="@string/compass_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/camera_btt" />
+        app:layout_constraintTop_toBottomOf="@+id/compass_btt" />
 
     <Button
         android:id="@+id/btnEphCalc"
