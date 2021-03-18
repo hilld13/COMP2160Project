@@ -32,10 +32,6 @@ public class EphemerisCalculator extends AppCompatActivity {
 
     private int planet;
     private SweDate sd;
-    //private SDate utdate;
-
-    //private SwissEph sw = new SwissEph();   // SwissEph(java.lang.String path); path is the location of the ephemeris data files
-    //private SwissEph sw = new SwissEph(getApplicationContext().getFilesDir() + File.separator + "ephe");     // crashes
 
     double[] xp = new double[6];
     double[] xaz = new double[3];
@@ -48,6 +44,7 @@ public class EphemerisCalculator extends AppCompatActivity {
     private TextView txtDeclination;
     private TextView txtLatitude;
     private TextView txtLongitude;
+    private TextView txtGeneralOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +60,10 @@ public class EphemerisCalculator extends AppCompatActivity {
         txtLatitude = (TextView) findViewById(R.id.editTextLatitude);
         txtLongitude = (TextView) findViewById(R.id.editTextLongitude);
 
+        txtGeneralOutput = (TextView) findViewById(R.id.generalOutputTextView);
+
         txtLatitude.setText("" + latitude);
         txtLongitude.setText("" + longitude);
-
-        //txtMessages.setText(getCacheDir().toString());  // /data/user/0/ca.lazymail.ephemeristest2/cache
-        //txtMessages.setText(getApplication().getAssets().toString());  // android.content.res.AssetManager@82e57c9
-        //txtMessages.setText(getBaseContext().getAssets().toString()); // android.content.res.AssetManager@82e57c9
-        //txtMessages.setText(getDataDir().toString()); // /data/user/ca.lazymail.ephemeristest2
-        //txtMessages.setText(getDataDir().toString()); // /data/user/ca.lazymail.ephemeristest2
-        //txtMessages.setText(getApplicationContext().getFilesDir() + File.separator + "ephe");   // /data/user/ca.lazymail.ephemeristest2/files/ephe
 
     }
 
@@ -80,13 +72,11 @@ public class EphemerisCalculator extends AppCompatActivity {
         String s = "";
         Calendar cal = Calendar.getInstance(java.util.TimeZone.getTimeZone("Etc/UTC"), Locale.CANADA);
 
-        int flags =
-                SweConst.SEFLG_TOPOCTR |    // topocentric !!!!
-                        SweConst.SEFLG_SWIEPH |         // slow and least accurate calculation method
-                        SweConst.SEFLG_SIDEREAL |       // sidereal zodiac
-                        SweConst.SEFLG_NONUT |          // will be set automatically for sidereal calculations, if not set here
-                        SweConst.SEFLG_SPEED;           // to determine retrograde vs. direct motion
+        int flags = SweConst.SEFLG_EQUATORIAL | SweConst.SEFLG_SWIEPH | SweConst.SEFLG_SPEED;
         boolean retrograde = false;
+
+        String azString;
+        String elString;
 
         SwissEph sw = new SwissEph(getApplicationContext().getFilesDir() + File.separator + "/ephe");
 
@@ -101,28 +91,40 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         sd = new SweDate(year, month, day, hour);
         sw.swe_set_topo(longitude, latitude, 0);
+
         // set body (hard code for now to Mars)
         planet = SweConst.SE_MARS;
 
         // calc RA/D
         int ret = sw.swe_calc_ut(sd.getJulDay(), planet, flags, xp, serr);
 
-        txtRtAscension.setText("RA: " + xp[0]);
-        txtDeclination.setText(" D: " + xp[1]);
-        //txtMessages.setText("serr: " + serr);
-        //txtMessages.setText("" + cal.getTimeZone());
+        txtRtAscension.setText(String.format("Right Ascension: %.2f", xp[0]));
+        txtDeclination.setText(String.format("Declination: %.2f", xp[1]));
 
         // convert to Az/El
         xin[0] = xp[0];
         xin[1] = xp[1];
 
-        geopos[0] = latitude;
-        geopos[1] = longitude;
+        geopos[0] = longitude;
+        geopos[1] = latitude;
         geopos[2] = 0;
 
         sw.swe_azalt(sd.getJulDay(), SweConst.SE_EQU2HOR, geopos, 0, 20, xin, xaz);
+        if (latitude > 0) {
+            azimuth = xaz[0] + 180.0;      // azimuth is incorrectly calculated as south being 0 instead of 180.
+        } else {
+            azimuth = xaz[0];           // I don't know if I need to fix azimuth or the southern hemisphere.
+        }
+        elevation = xaz[1];
 
-        txtElevation.setText("Elevation: " + xaz[1]);
-        txtAzimuth.setText("Azimuth: " + xaz[0]);
+        azString = String.format("Azimuth: %.2f", azimuth);
+        elString = String.format("Elevation: %.2f", elevation);
+
+        txtAzimuth.setText(azString);
+        txtElevation.setText(elString);
+
+        //txtGeneralOutput.setText("" + serr);
+
+        sw.swe_close();
     }
 }
