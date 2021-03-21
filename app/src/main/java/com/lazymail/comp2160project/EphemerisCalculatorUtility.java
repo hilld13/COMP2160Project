@@ -39,11 +39,15 @@ public class EphemerisCalculatorUtility extends AppCompatActivity {
 
     public static void calcAzEl(Context context, int planet, SweDate sd, double latitude, double longitude, double[] azel) {
         /*
+         *  we have to pass the context in from the caller. Just add "getApplicationContext()" to the argument for context.
          *  planet is one of the SweConst planets. eg, SweConst.SE_MARS
-         *  SweDate sd is the date and time SweDate Object. See timeNow()
+         *  SweDate sd is the date and time SweDate Object. I create a SweDate object called sd in the calling function, then set sd=EphemerisCalculatorUtility.timeNow() .
          *  latitude and longitude is that of the observer
          *  azel is a 4 element double array. Azimuth, Elevation, Right Ascension, Declination
          *  azel is where the results are stored.
+         *
+         * An example of a call to this function:
+         * EphemerisCalculatorUtility.calcAzEl(getApplicationContext(), SweConst.SE_MARS, EphemerisCalculatorUtility.timeNow(), 49.1, -122.9, azelResultArray);
          */
 
         //double latitude = 49.1;
