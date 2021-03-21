@@ -16,7 +16,7 @@ import swisseph.SwissEph;
 
 public class EphemerisCalculator extends AppCompatActivity {
 
-    private double latitude = 49.1;
+    private double latitude = -49.1;
     private double longitude = -122.9;
     private double azimuth;
     private double elevation;
@@ -67,12 +67,14 @@ public class EphemerisCalculator extends AppCompatActivity {
 
     }
 
-    public void calcAzEl(View view) {
+    public void calculateAzEl(View view) {
         StringBuffer serr = new StringBuffer();
         String s = "";
         Calendar cal = Calendar.getInstance(java.util.TimeZone.getTimeZone("Etc/UTC"), Locale.CANADA);
 
-        int flags = SweConst.SEFLG_EQUATORIAL | SweConst.SEFLG_SWIEPH | SweConst.SEFLG_SPEED;
+        double[] azel = new double[4];
+
+        int flags = SweConst.SEFLG_EQUATORIAL | SweConst.SEFLG_SWIEPH | SweConst.SEFLG_SPEED | SweConst.SEFLG_TRUEPOS;
         boolean retrograde = false;
 
         String azString;
@@ -80,6 +82,7 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         SwissEph sw = new SwissEph(getApplicationContext().getFilesDir() + File.separator + "/ephe");
 
+        /*  replaced with a call to EphemerisCalculatorUtility.timeNow();
         // Set date/time
         t_second = cal.get(Calendar.SECOND);
         t_minute = cal.get(Calendar.MINUTE);
@@ -90,11 +93,20 @@ public class EphemerisCalculator extends AppCompatActivity {
         hour = t_hour + (t_minute / 60.0) + (t_second / 3600.0);
 
         sd = new SweDate(year, month, day, hour);
+        */
+
+        sd = EphemerisCalculatorUtility.timeNow();
+
+        latitude = Double.parseDouble(txtLatitude.getText().toString());
+        longitude = Double.parseDouble(txtLongitude.getText().toString());
+
         sw.swe_set_topo(longitude, latitude, 0);
 
         // set body (hard code for now to Mars)
         planet = SweConst.SE_MARS;
 
+
+        /* replaced with a call to EphemerisCalculatorUtility.calcAzEl();
         // calc RA/D
         int ret = sw.swe_calc_ut(sd.getJulDay(), planet, flags, xp, serr);
 
@@ -110,11 +122,9 @@ public class EphemerisCalculator extends AppCompatActivity {
         geopos[2] = 0;
 
         sw.swe_azalt(sd.getJulDay(), SweConst.SE_EQU2HOR, geopos, 0, 20, xin, xaz);
-        if (latitude > 0) {
-            azimuth = xaz[0] + 180.0;      // azimuth is incorrectly calculated as south being 0 instead of 180.
-        } else {
-            azimuth = xaz[0];           // I don't know if I need to fix azimuth or the southern hemisphere.
-        }
+        azimuth = xaz[0] + 180.0;      // azimuth is incorrectly calculated as south being 0 instead of 180.
+        if (azimuth >= 360.0)  azimuth -= 360.0; // and if we roll over 360, then fix that too.
+
         elevation = xaz[1];
 
         azString = String.format("Azimuth: %.2f", azimuth);
@@ -122,8 +132,19 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         txtAzimuth.setText(azString);
         txtElevation.setText(elString);
-
+        */
         //txtGeneralOutput.setText("" + serr);
+
+        EphemerisCalculatorUtility.calcAzEl(getApplicationContext(), planet, sd, latitude, longitude, azel);
+
+
+        txtRtAscension.setText(String.format("Right Ascension: %.2f", azel[2]));
+        txtDeclination.setText(String.format("Declination: %.2f", azel[3]));
+
+        azString = String.format("Azimuth: %.2f", azel[0]);
+        elString = String.format("Elevation: %.2f", azel[1]);
+        txtAzimuth.setText(azString);
+        txtElevation.setText(elString);
 
         sw.swe_close();
     }
