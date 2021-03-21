@@ -82,19 +82,6 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         SwissEph sw = new SwissEph(getApplicationContext().getFilesDir() + File.separator + "/ephe");
 
-        /*  replaced with a call to EphemerisCalculatorUtility.timeNow();
-        // Set date/time
-        t_second = cal.get(Calendar.SECOND);
-        t_minute = cal.get(Calendar.MINUTE);
-        t_hour = cal.get(Calendar.HOUR_OF_DAY);
-        day = cal.get(Calendar.DATE);
-        month = cal.get(Calendar.MONTH) + 1;
-        year = cal.get(Calendar.YEAR);
-        hour = t_hour + (t_minute / 60.0) + (t_second / 3600.0);
-
-        sd = new SweDate(year, month, day, hour);
-        */
-
         sd = EphemerisCalculatorUtility.timeNow();
 
         latitude = Double.parseDouble(txtLatitude.getText().toString());
@@ -104,36 +91,6 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         // set body (hard code for now to Mars)
         planet = SweConst.SE_MARS;
-
-
-        /* replaced with a call to EphemerisCalculatorUtility.calcAzEl();
-        // calc RA/D
-        int ret = sw.swe_calc_ut(sd.getJulDay(), planet, flags, xp, serr);
-
-        txtRtAscension.setText(String.format("Right Ascension: %.2f", xp[0]));
-        txtDeclination.setText(String.format("Declination: %.2f", xp[1]));
-
-        // convert to Az/El
-        xin[0] = xp[0];
-        xin[1] = xp[1];
-
-        geopos[0] = longitude;
-        geopos[1] = latitude;
-        geopos[2] = 0;
-
-        sw.swe_azalt(sd.getJulDay(), SweConst.SE_EQU2HOR, geopos, 0, 20, xin, xaz);
-        azimuth = xaz[0] + 180.0;      // azimuth is incorrectly calculated as south being 0 instead of 180.
-        if (azimuth >= 360.0)  azimuth -= 360.0; // and if we roll over 360, then fix that too.
-
-        elevation = xaz[1];
-
-        azString = String.format("Azimuth: %.2f", azimuth);
-        elString = String.format("Elevation: %.2f", elevation);
-
-        txtAzimuth.setText(azString);
-        txtElevation.setText(elString);
-        */
-        //txtGeneralOutput.setText("" + serr);
 
         EphemerisCalculatorUtility.calcAzEl(getApplicationContext(), planet, sd, latitude, longitude, azel);
 
