@@ -68,6 +68,8 @@ public class EphemerisCalculator extends AppCompatActivity {
         txtLatitude.setText("" + latitude);
         txtLongitude.setText("" + longitude);
 
+        calculateAzEl(null);
+
     }
 
     public void calculateAzEl(View view) {
