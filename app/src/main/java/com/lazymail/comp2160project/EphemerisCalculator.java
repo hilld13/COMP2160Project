@@ -17,7 +17,7 @@ import swisseph.SwissEph;
 
 public class EphemerisCalculator extends AppCompatActivity {
 
-    private double latitude = -49.1;
+    private double latitude = 49.1;
     private double longitude = -122.9;
     private double azimuth;
     private double elevation;
