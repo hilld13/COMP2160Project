@@ -7,13 +7,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.File;
-import java.util.Calendar;
-import java.util.Locale;
-
 import swisseph.SweConst;
 import swisseph.SweDate;
-import swisseph.SwissEph;
 
 public class EphemerisCalculator extends AppCompatActivity {
 
@@ -23,21 +18,8 @@ public class EphemerisCalculator extends AppCompatActivity {
     private double elevation;
     private int requestCode = 1000;
 
-    private int t_second;
-    private int t_minute;
-    private int t_hour;
-    private int day;
-    private int month;
-    private int year;
-    private double hour;
-
     private int planet;
     private SweDate sd;
-
-    double[] xp = new double[6];
-    double[] xaz = new double[3];
-    double [] xin = new double[3];
-    double[] geopos = new double[3];
 
     private TextView txtElevation;
     private TextView txtAzimuth;
@@ -73,32 +55,20 @@ public class EphemerisCalculator extends AppCompatActivity {
     }
 
     public void calculateAzEl(View view) {
-        StringBuffer serr = new StringBuffer();
-        String s = "";
-        Calendar cal = Calendar.getInstance(java.util.TimeZone.getTimeZone("Etc/UTC"), Locale.CANADA);
-
-        double[] azel = new double[4];
-
-        int flags = SweConst.SEFLG_EQUATORIAL | SweConst.SEFLG_SWIEPH | SweConst.SEFLG_SPEED | SweConst.SEFLG_TRUEPOS;
-        boolean retrograde = false;
-
         String azString;
         String elString;
 
-        SwissEph sw = new SwissEph(getApplicationContext().getFilesDir() + File.separator + "/ephe");
+        double[] azel = new double[4];
 
         sd = EphemerisCalculatorUtility.timeNow();
 
         latitude = Double.parseDouble(txtLatitude.getText().toString());
         longitude = Double.parseDouble(txtLongitude.getText().toString());
 
-        sw.swe_set_topo(longitude, latitude, 0);
-
         // set body (hard code for now to Mars)
         planet = SweConst.SE_MARS;
 
         EphemerisCalculatorUtility.calcAzEl(getApplicationContext(), planet, sd, latitude, longitude, azel);
-
 
         txtRtAscension.setText(String.format("Right Ascension: %.2f", azel[2]));
         txtDeclination.setText(String.format("Declination: %.2f", azel[3]));
@@ -107,7 +77,5 @@ public class EphemerisCalculator extends AppCompatActivity {
         elString = String.format("Elevation: %.2f", azel[1]);
         txtAzimuth.setText(azString);
         txtElevation.setText(elString);
-
-        sw.swe_close();
     }
 }

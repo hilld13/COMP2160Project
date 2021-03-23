@@ -50,8 +50,6 @@ public class EphemerisCalculatorUtility extends AppCompatActivity {
          * EphemerisCalculatorUtility.calcAzEl(getApplicationContext(), SweConst.SE_MARS, EphemerisCalculatorUtility.timeNow(), 49.1, -122.9, azelResultArray);
          */
 
-        //double latitude = 49.1;
-        //double longitude = -122.9;
         double azimuth;
         double elevation;
         double[] xp = new double[6];
@@ -67,8 +65,6 @@ public class EphemerisCalculatorUtility extends AppCompatActivity {
         new CopyAssetfiles(".*\\.se1", context.getApplicationContext()).copy();
 
         SwissEph sw = new SwissEph(context.getApplicationContext().getFilesDir() + File.separator + "/ephe");
-
-        //sd = timeNow();
 
         sw.swe_set_topo(longitude, latitude, 0);
 
