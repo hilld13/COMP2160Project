@@ -2,23 +2,18 @@ package com.lazymail.comp2160project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
-import android.provider.MediaStore;
+
 
 public class Compass extends AppCompatActivity implements SensorEventListener {
 
@@ -76,7 +71,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
             float azimuthInDegrees = (float) Math.toDegrees(azimuthInRadians);
 
             RotateAnimation rotateAnimation = new RotateAnimation(currentDegree, -azimuthInDegrees, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-            rotateAnimation.setDuration(250);
+            rotateAnimation.setDuration(210);
             rotateAnimation.setFillAfter(true);
             imageView.startAnimation(rotateAnimation);
 
@@ -96,7 +91,6 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
     @Override
     protected void onResume() {
         super.onResume();
-
         sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(this, magnetometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
@@ -104,7 +98,6 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
     @Override
     protected void onPause() {
         super.onPause();
-
         sensorManager.unregisterListener(this, accelerometerSensor);
         sensorManager.unregisterListener(this, magnetometerSensor);
     }

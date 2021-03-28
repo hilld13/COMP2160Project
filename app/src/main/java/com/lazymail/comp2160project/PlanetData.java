@@ -1,54 +1,43 @@
 package com.lazymail.comp2160project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.WindowManager;
 
-import java.io.IOException;
-import java.nio.file.Files;
-
-import java.io.FileNotFoundException;
-
-import java.nio.file.Paths;
 import java.util.ArrayList;
-
-import com.google.gson.*;
-
+import java.util.List;
 
 public class PlanetData extends AppCompatActivity {
-    //Initializing variables
-    ListView listView;
-    ArrayList<String> planetList = new ArrayList<>();
-    String[] testList = {"1", "2", "3"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // I can't make the list appear properly for some reason ! Need help !!
         setContentView(R.layout.activity_planet_data);
-        listView = findViewById(R.id.list_planet_view);
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, testList);
-        listView.setAdapter(itemsAdapter);
-    }
+        // set the statue bar background to transparent
 
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-    //To add data from json file into array. (considering create a class as object to handle Planet data.)
-    protected void addData() throws IOException {
-        //Assign variables
-        Gson gson = new Gson();
-        String file = "src//main//assets//planetdata.json";
-        String json = "";
-        try {
-            //read file
-            json =  new String(Files.readAllBytes(Paths.get(file)));
-            planetList = gson.fromJson(json, ArrayList.class);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        // setup recyclerview with the adapter
+
+        RecyclerView recyclerView = findViewById(R.id.rv_list);
+        List<list_item> mlist = new ArrayList<>();
+        mlist.add(new list_item(R.drawable.sun, "Sun"));
+        mlist.add(new list_item(R.drawable.mercury, "Mercury"));
+        mlist.add(new list_item(R.drawable.venus, "Venus"));
+        mlist.add(new list_item(R.drawable.mars, "Mars"));
+        mlist.add(new list_item(R.drawable.jupiter, "Jupiter"));
+        mlist.add(new list_item(R.drawable.saturn, "Saturn"));
+        mlist.add(new list_item(R.drawable.neptune, "Neptune"));
+        mlist.add(new list_item(R.drawable.uranus, "Uranus"));
+        Adapter adapter = new Adapter(this, mlist);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
 
