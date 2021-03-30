@@ -38,6 +38,7 @@ public class PlanetData extends AppCompatActivity {
         Adapter adapter = new Adapter(this, mlist);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 }
 

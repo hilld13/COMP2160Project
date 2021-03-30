@@ -10,13 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+
+import org.json.*;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
     Context mContext;
     List<list_item> mData;
-
+    private boolean expanded;
+    private String name;
     public Adapter(Context mContext, List<list_item> mData) {
         this.mContext = mContext;
         this.mData = mData;
@@ -53,5 +58,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
             name = itemView.findViewById(R.id.item_name);
         }
     }
-
 }
