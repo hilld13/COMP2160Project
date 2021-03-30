@@ -29,7 +29,7 @@ public class Planet {
         this.siderealRotationPeriod = jsonObject.getString("SiderealRotationPeriod");
         this.semiMajorAxis = jsonObject.getString("SemiMajorAxis");
 
-
+        this.expanded = false; //initially this will be not expanded (false).
     }
     @Override
     public String toString(){
@@ -43,5 +43,25 @@ public class Planet {
                 + "\n"+siderealOrbitalPeriod
                 + "\n"+siderealRotationPeriod;
     }
+    public boolean isExpanded(){
+        return expanded;
+    }
+    public void setExpanded(boolean expanded){
+        this.expanded = expanded;
+    }
+    public String getBody(){
+        return this.body;
+    }
+    public String getMass(){
+        return this.mass;
+    }
+    public String getVolume(){
+        return this.volume;
+    }
+    public String getGravity(){
+        return this.gravity;
+    }
+
+
 }
 
