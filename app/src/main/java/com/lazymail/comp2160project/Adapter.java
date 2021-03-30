@@ -17,7 +17,13 @@ import java.util.List;
 import org.json.*;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
-
+    //Declaring variables.
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<Planet> arrayPlanet = new ArrayList<>();
+    ListView listView;
+    ArrayAdapter<String> arrayAdapter;
+    JSONParser parser = new JSONParser();
+    JSONArray jsonArray;
     Context mContext;
     List<list_item> mData;
     private boolean expanded;
