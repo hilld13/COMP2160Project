@@ -2,7 +2,6 @@ package com.lazymail.comp2160project;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +13,9 @@ public class EphemerisCalculator extends AppCompatActivity {
 
     private double latitude = 49.1;
     private double longitude = -122.9;
-    private double azimuth;
-    private double elevation;
-    private int requestCode = 1000;
+    //private double azimuth;
+    //private double elevation;
+    //private int requestCode = 1000;
 
     private int planet;
     private SweDate sd;
