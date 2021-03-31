@@ -64,7 +64,7 @@ public class PlanetData extends AppCompatActivity {
 
         try {
 
-            InputStream stream = getAssets().open(inFile); //getAssets need context unless main activity.
+            InputStream stream = getAssets().open(inFile);
             int size = stream.available();
             byte[] buffer = new byte[size];
             stream.read(buffer);

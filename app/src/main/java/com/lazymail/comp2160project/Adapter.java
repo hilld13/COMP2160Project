@@ -52,6 +52,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
         holder.background_img.setImageResource(mData.get(position).getBackground());
         holder.name.setText(mData.get(position).getItemName());
+        holder.mass.setText(planetList.get(position).getMass());
+        holder.volume.setText(planetList.get(position).getVolume());
+        holder.gravity.setText(planetList.get(position).getGravity());
+
         boolean isExpanded = planetList.get(position).isExpanded();
         holder.expandableLayout.setVisibility((isExpanded ? View.VISIBLE : View.GONE));
     }
@@ -65,6 +69,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         ConstraintLayout expandableLayout;
         ImageView background_img;
         TextView name;
+        TextView volume;
+        TextView mass;
+        TextView gravity;
+
         Button button;
         public myViewHolder(View itemView) {
             super(itemView);
@@ -73,16 +81,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
             expandableLayout = itemView.findViewById((R.id.more_info));
             button = (Button) itemView.findViewById(R.id.button);
 
+            mass = itemView.findViewById(R.id.mass_planet);
+            volume = itemView.findViewById(R.id.volume_planet);
+            gravity = itemView.findViewById(R.id.gravity_planet);
+
+
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    TextView mass = itemView.findViewById(R.id.mass_planet);
-                    mass.setText(planetList.get(getAdapterPosition()).getMass());
-                    TextView volume = itemView.findViewById(R.id.volume_planet);
-                    volume.setText(planetList.get(getAdapterPosition()).getVolume());
-                    TextView gravity = itemView.findViewById(R.id.gravity_planet);
-                    gravity.setText(planetList.get(getAdapterPosition()).getGravity());
-
                     Planet planet = planetList.get(getAdapterPosition());
                     planet.setExpanded(!planet.isExpanded());
                     notifyItemChanged(getAdapterPosition());
