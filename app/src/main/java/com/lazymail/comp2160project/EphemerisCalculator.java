@@ -13,9 +13,6 @@ public class EphemerisCalculator extends AppCompatActivity {
 
     private double latitude = 49.1;
     private double longitude = -122.9;
-    //private double azimuth;
-    //private double elevation;
-    //private int requestCode = 1000;
 
     private int planet;
     private SweDate sd;
