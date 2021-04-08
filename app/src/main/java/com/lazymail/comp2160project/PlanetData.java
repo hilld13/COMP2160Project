@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -29,8 +32,10 @@ public class PlanetData extends AppCompatActivity {
     //Declaring variables.
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayList<Planet> arrayPlanet = new ArrayList<>();
+    List<list_item> mlist = new ArrayList<>();
     ListView listView;
     ArrayAdapter<String> arrayAdapter;
+    Adapter adapter;
     JSONParser parser = new JSONParser();
     JSONArray jsonArray;
 
@@ -49,7 +54,6 @@ public class PlanetData extends AppCompatActivity {
         // setup recyclerview with the adapter
 
         RecyclerView recyclerView = findViewById(R.id.rv_list);
-        List<list_item> mlist = new ArrayList<>();
         mlist.add(new list_item(R.drawable.sun, "Sun"));
         mlist.add(new list_item(R.drawable.mercury, "Mercury"));
         mlist.add(new list_item(R.drawable.venus, "Venus"));
@@ -58,33 +62,35 @@ public class PlanetData extends AppCompatActivity {
         mlist.add(new list_item(R.drawable.saturn, "Saturn"));
         mlist.add(new list_item(R.drawable.neptune, "Neptune"));
         mlist.add(new list_item(R.drawable.uranus, "Uranus"));
-        Adapter adapter = new Adapter(this, mlist, arrayPlanet);
+        adapter = new Adapter(this, mlist, arrayPlanet);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        //Search bar
+        EditText editText = (EditText) findViewById(R.id.search_bar);
+        editText.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-
             @Override
-            public boolean onQueryTextChange(String newText) {
-                arrayAdapter.getFilter().filter(newText);
-                return false;
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
             }
         });
-        return true;
     }
+    private void filter(String text) {
+        ArrayList<list_item> filteredList = new ArrayList<>();
+        for (list_item item : mlist) {
+            if (item.getItemName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
+    }
+
 
     // LOAD ASSET (JSON FILE) & GET STRING FORMAT FROM IT
     public String LoadData (String inFile){

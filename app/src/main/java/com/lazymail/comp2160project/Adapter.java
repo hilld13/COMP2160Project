@@ -68,38 +68,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         return mData.size();
     }
 
-    // Search bar - To filtered results base on input
-    public Filter getFilter() {
-        return exampleFilter;
+
+    public void filterList(ArrayList<list_item> filteredList) {
+        mData = filteredList;
+        notifyDataSetChanged();
     }
-    private Filter exampleFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<list_item> filteredList = new ArrayList<>();
-
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(full_mData);
-            } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                for (list_item item: full_mData) {
-                    if (item.toString().toLowerCase().contains((filterPattern))) {
-                        filteredList.add(item);
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-
-            return  results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            mData.clear();
-            mData.addAll((List) results.values);
-            notifyDataSetChanged();
-        }
-    };
 
     public class myViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout expandableLayout;
