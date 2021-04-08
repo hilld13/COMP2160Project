@@ -11,5 +11,5 @@
     <string name="enter_the_lat_and_long_of_the_observer">Enter the Lat and Long of the observer</string>
     <string name="declination_text">Declination</string>
     <string name="item_btn">More Info</string>
-    <string name="planet_to_search">planet to search</string>
+    <string name="search_for_planet">  Search for planet</string>
 </resources>

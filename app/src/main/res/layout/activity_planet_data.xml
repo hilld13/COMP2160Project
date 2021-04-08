@@ -4,35 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:autofillHints="Search for Planet"
     android:background="#000000"
+    android:backgroundTint="#000000"
     tools:context=".PlanetData">
 
 
     <EditText
         android:id="@+id/search_bar"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:autofillHints=""
-        android:background="@android:color/transparent"
+        android:layout_width="383dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
         android:ems="10"
+        android:paddingLeft="10dp"
+        android:hint="@string/search_for_planet"
         android:inputType="textPersonName"
-        android:text="@string/planet_to_search"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#454545"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
