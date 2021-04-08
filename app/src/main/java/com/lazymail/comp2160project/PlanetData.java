@@ -64,7 +64,6 @@ public class PlanetData extends AppCompatActivity {
         mlist.add(new list_item(R.drawable.umbriel, "Umbriel "));
         mlist.add(new list_item(R.drawable.titania, "Titania "));
         mlist.add(new list_item(R.drawable.oberon, "Oberon "));
-        mlist.add(new list_item(R.drawable.neptune, "Neptune "));
         mlist.add(new list_item(R.drawable.naiad, "Naiad "));
         mlist.add(new list_item(R.drawable.thalassa, "Thalassa "));
         mlist.add(new list_item(R.drawable.unknown, "Despina "));
