@@ -56,6 +56,18 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         new CopyAssetfiles(".*\\.se1", getApplicationContext()).copy();
 
+        EphPlanetListData[] ephPlanetList = new EphPlanetListData[] {
+                new EphPlanetListData("Sol", SweConst.SE_SUN),
+                new EphPlanetListData("Mercury", SweConst.SE_MERCURY)
+        };
+
+        // crashes somewhere in the next 5 lines
+        /*RecyclerView ephRecyclerView = (RecyclerView) findViewById(R.id.ephRecyclerView);
+        EphPlanetListAdapter adapter = new EphPlanetListAdapter((ephPlanetList));
+        ephRecyclerView.setHasFixedSize(true);
+        ephRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
+        //ephRecyclerView.setAdapter(adapter);  // this line crashes the app. No idea why, but it does.
+
         txtElevation = (TextView) findViewById(R.id.textElevation);
         txtAzimuth = (TextView) findViewById(R.id.textAzimuth);
         txtRtAscension = (TextView) findViewById(R.id.textRighAscen);
@@ -87,6 +99,7 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         // set body (hard code for now to Mars)
         planet = SweConst.SE_MARS;
+        txtGeneralOutput.setText("Mars");
 
         EphemerisCalculatorUtility.calcAzEl(getApplicationContext(), planet, sd, latitude, longitude, azel);
 
