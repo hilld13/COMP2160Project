@@ -32,39 +32,61 @@
    "SiderealRotationPeriod": "-5836.2",
    "SemiMajorAxis": 108209000
  },
- {
-   "Body": "Earth",
-   "ParentBody": "Sol",
-   "Mass": 5.9724e+24,
-   "Volume": 1083210000000,
-   "MeanRadius": 6371,
-   "Gravity": 9.798,
-   "SiderealOrbitalPeriod": 365.256,
-   "SiderealRotationPeriod": "23.9345",
-   "SemiMajorAxis": 149596000
- },
- {
-   "Body": "Earth",
-   "ParentBody": "Earth",
-   "Mass": 7.346e+22,
-   "Volume": 21968000000,
-   "MeanRadius": 1737.4,
-   "Gravity": 1.62,
-   "SiderealOrbitalPeriod": 27.3217,
-   "SiderealRotationPeriod": "655.728",
-   "SemiMajorAxis": 384400
- },
- {
-   "Body": "Mars",
-   "ParentBody": "Sol",
-   "Mass": 6.4171e+23,
-   "Volume": 163180000000,
-   "MeanRadius": 3389.5,
-   "Gravity": 3.71,
-   "SiderealOrbitalPeriod": 686.98,
-   "SiderealRotationPeriod": "24.6229",
-   "SemiMajorAxis": 227923000
- },
+  {
+    "Body": "Mars",
+    "ParentBody": "Sol",
+    "Mass": 6.4171e+23,
+    "Volume": 163180000000,
+    "MeanRadius": 3389.5,
+    "Gravity": 3.71,
+    "SiderealOrbitalPeriod": 686.98,
+    "SiderealRotationPeriod": "24.6229",
+    "SemiMajorAxis": 227923000
+  },
+  {
+    "Body": "Jupiter",
+    "ParentBody": "Sol",
+    "Mass": 1.89819e+27,
+    "Volume": 1431280000000000,
+    "MeanRadius": 69911,
+    "Gravity": 24.79,
+    "SiderealOrbitalPeriod": 4332.589,
+    "SiderealRotationPeriod": "9.925",
+    "SemiMajorAxis": 778560000
+  },
+  {
+    "Body": "Saturn",
+    "ParentBody": "Sol",
+    "Mass": 5.6834e+26,
+    "Volume": 827130000000000,
+    "MeanRadius": 58232,
+    "Gravity": 10.44,
+    "SiderealOrbitalPeriod": 10759.22,
+    "SiderealRotationPeriod": "10.656",
+    "SemiMajorAxis": 1433529000
+  },
+  {
+    "Body": "Neptune",
+    "ParentBody": "Sol",
+    "Mass": 1.02413e+26,
+    "Volume": 6.254e+13,
+    "MeanRadius": 24622,
+    "Gravity": 11.15,
+    "SiderealOrbitalPeriod": 10759.22,
+    "SiderealRotationPeriod": "10.656",
+    "SemiMajorAxis": 1433529000
+  },
+  {
+    "Body": "Uranus",
+    "ParentBody": "Sol",
+    "Mass": 8.6813e+25,
+    "Volume": 68330000000000,
+    "MeanRadius": 25362,
+    "Gravity": 8.87,
+    "SiderealOrbitalPeriod": 30685.4,
+    "SiderealRotationPeriod": "-17.24",
+    "SemiMajorAxis": 2872463000
+  },
  {
    "Body": "Phobos",
    "ParentBody": "Mars",
@@ -97,17 +119,6 @@
    "SiderealOrbitalPeriod": 1679,
    "SiderealRotationPeriod": "9.074",
    "SemiMajorAxis": 415200000
- },
- {
-   "Body": "Jupiter",
-   "ParentBody": "Sol",
-   "Mass": 1.89819e+27,
-   "Volume": 1431280000000000,
-   "MeanRadius": 69911,
-   "Gravity": 24.79,
-   "SiderealOrbitalPeriod": 4332.589,
-   "SiderealRotationPeriod": "9.925",
-   "SemiMajorAxis": 778560000
  },
  {
    "Body": "Io",
@@ -152,17 +163,6 @@
    "SiderealOrbitalPeriod": 16.689017,
    "SiderealRotationPeriod": "S",
    "SemiMajorAxis": 1882.7
- },
- {
-   "Body": "Saturn",
-   "ParentBody": "Sol",
-   "Mass": 5.6834e+26,
-   "Volume": 827130000000000,
-   "MeanRadius": 58232,
-   "Gravity": 10.44,
-   "SiderealOrbitalPeriod": 10759.22,
-   "SiderealRotationPeriod": "10.656",
-   "SemiMajorAxis": 1433529000
  },
  {
    "Body": "Mimas",
@@ -251,16 +251,5 @@
    "SiderealOrbitalPeriod": 79.330183,
    "SiderealRotationPeriod": "S",
    "SemiMajorAxis": 3561.3
- },
- {
-   "Body": "Uranus",
-   "ParentBody": "Sol",
-   "Mass": 8.6813e+25,
-   "Volume": 68330000000000,
-   "MeanRadius": 25362,
-   "Gravity": 8.87,
-   "SiderealOrbitalPeriod": 30685.4,
-   "SiderealRotationPeriod": "-17.24",
-   "SemiMajorAxis": 2872463000
  }
 ]
