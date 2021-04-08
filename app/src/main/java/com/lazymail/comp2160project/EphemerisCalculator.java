@@ -31,8 +31,8 @@ import swisseph.SweDate;
 
 public class EphemerisCalculator extends AppCompatActivity {
 
-    private double latitude; // = 49.1;
-    private double longitude; // = -122.9;
+    private double latitude = 49.1;
+    private double longitude = -122.9;
 
     private int planet;
     private SweDate sd;
