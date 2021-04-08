@@ -31,8 +31,8 @@ import swisseph.SweDate;
 
 public class EphemerisCalculator extends AppCompatActivity {
 
-    private double latitude = 49.1;
-    private double longitude = -122.9;
+    private double latitude; // = 49.1;
+    private double longitude; // = -122.9;
 
     private int planet;
     private SweDate sd;
@@ -107,10 +107,7 @@ public class EphemerisCalculator extends AppCompatActivity {
             // check if location is enabled
             if (isLocationEnabled()) {
 
-                // getting last
-                // location from
-                // FusedLocationClient
-                // object
+                // getting last location from FusedLocationClient object
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
@@ -208,6 +205,7 @@ public class EphemerisCalculator extends AppCompatActivity {
     }
 
     public void updateLocation(View view) {
+        //requestNewLocationData();
         getLastLocation();
     }
 }
