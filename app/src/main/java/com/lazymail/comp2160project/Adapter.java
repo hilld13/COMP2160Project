@@ -30,6 +30,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     Context mContext;
     List<list_item> mData;
     List<Planet> planetList;
+    List<list_item> full_mData;
     private boolean expanded;
     private String name;
 
@@ -38,7 +39,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         this.mContext = mContext;
         this.mData = mData;
         this.planetList = planetList;
-
+        this.full_mData = new ArrayList<>(mData); // avoid pointer point to same address
     }
 
     @Override
@@ -67,26 +68,39 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         return mData.size();
     }
 
-   /*  @Override
+    // Search bar - To filtered results base on input
     public Filter getFilter() {
         return exampleFilter;
     }
-    private Filter exampleFilter( new Filter()) {
+    private Filter exampleFilter = new Filter() {
         @Override
-         protected  FilterResult perfomeFiltering(CharSequence constraint) {
-             List<Planet> filteredList = new ArrayList<>();
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<list_item> filteredList = new ArrayList<>();
 
-             if (constraint == null || constraint.length() == 0){
-                 filteredList.addAll((planetList));
-             } else {
-                 String filterPattern = constraint.toString().to
-             }
-         }
-         @Override
-         protected void publishResults(CharSequence constraint,FilterResult results){
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(full_mData);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (list_item item: full_mData) {
+                    if (item.toString().toLowerCase().contains((filterPattern))) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
 
-     }
-*/
+            return  results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mData.clear();
+            mData.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
     public class myViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout expandableLayout;
         ImageView background_img;
