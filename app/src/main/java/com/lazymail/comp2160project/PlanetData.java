@@ -64,6 +64,34 @@ public class PlanetData extends AppCompatActivity {
         mlist.add(new list_item(R.drawable.saturn, "Saturn"));
         mlist.add(new list_item(R.drawable.neptune, "Neptune"));
         mlist.add(new list_item(R.drawable.uranus, "Uranus"));
+        mlist.add(new list_item(R.drawable.miranda, "Miranda "));
+        mlist.add(new list_item(R.drawable.unknown, "Ariel "));
+        mlist.add(new list_item(R.drawable.unknown, "Umbriel "));
+        mlist.add(new list_item(R.drawable.unknown, "Titania "));
+        mlist.add(new list_item(R.drawable.unknown, "Oberon "));
+        mlist.add(new list_item(R.drawable.unknown, "Neptune "));
+        mlist.add(new list_item(R.drawable.unknown, "Naiad "));
+        mlist.add(new list_item(R.drawable.unknown, "Thalassa "));
+        mlist.add(new list_item(R.drawable.unknown, "Despina "));
+        mlist.add(new list_item(R.drawable.unknown, "Galatea "));
+        mlist.add(new list_item(R.drawable.unknown, "Larissa "));
+        mlist.add(new list_item(R.drawable.unknown, "Hippocamp "));
+        mlist.add(new list_item(R.drawable.unknown, "Proteus "));
+        mlist.add(new list_item(R.drawable.unknown, "Triton "));
+        mlist.add(new list_item(R.drawable.unknown, "Nereid "));
+        mlist.add(new list_item(R.drawable.unknown, "Halimede "));
+        mlist.add(new list_item(R.drawable.unknown, "Sao "));
+        mlist.add(new list_item(R.drawable.unknown, "Laomedeia "));
+        mlist.add(new list_item(R.drawable.unknown, "Neso "));
+        mlist.add(new list_item(R.drawable.unknown, "Psamathe "));
+        mlist.add(new list_item(R.drawable.unknown, "Pluto "));
+        mlist.add(new list_item(R.drawable.unknown, "Charon "));
+        mlist.add(new list_item(R.drawable.unknown, "Syx "));
+        mlist.add(new list_item(R.drawable.unknown, "Nix "));
+        mlist.add(new list_item(R.drawable.unknown, "Kerberos "));
+        mlist.add(new list_item(R.drawable.unknown, "Hydra "));
+
+
         adapter = new Adapter(this, mlist, arrayPlanet);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
