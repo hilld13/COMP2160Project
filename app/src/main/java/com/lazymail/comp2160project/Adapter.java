@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -65,6 +67,26 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         return mData.size();
     }
 
+   /*  @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+    private Filter exampleFilter( new Filter()) {
+        @Override
+         protected  FilterResult perfomeFiltering(CharSequence constraint) {
+             List<Planet> filteredList = new ArrayList<>();
+
+             if (constraint == null || constraint.length() == 0){
+                 filteredList.addAll((planetList));
+             } else {
+                 String filterPattern = constraint.toString().to
+             }
+         }
+         @Override
+         protected void publishResults(CharSequence constraint,FilterResult results){
+
+     }
+*/
     public class myViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout expandableLayout;
         ImageView background_img;
