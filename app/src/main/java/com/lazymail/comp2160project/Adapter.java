@@ -69,8 +69,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     }
 
 
-    public void filterList(ArrayList<list_item> filteredList) {
-        mData = filteredList;
+    public void filterList(ArrayList<list_item> filteredList,ArrayList<Planet> planetList) {
+        this.mData = filteredList;
+        this.planetList = planetList;
         notifyDataSetChanged();
     }
 

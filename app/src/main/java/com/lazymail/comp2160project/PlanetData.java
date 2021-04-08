@@ -11,6 +11,8 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -80,6 +82,14 @@ public class PlanetData extends AppCompatActivity {
                 filter(s.toString());
             }
         });
+        editText.setOnTouchListener(new View.OnTouchListener()
+        {
+            public boolean onTouch(View arg0, MotionEvent arg1)
+            {
+                editText.setAlpha(1.0f);
+                return false;
+            }
+        });
     }
     private void filter(String text) {
         ArrayList<list_item> filteredList = new ArrayList<>();
@@ -88,7 +98,7 @@ public class PlanetData extends AppCompatActivity {
                 filteredList.add(item);
             }
         }
-        adapter.filterList(filteredList);
+        adapter.filterList(filteredList,arrayPlanet);
     }
 
 
