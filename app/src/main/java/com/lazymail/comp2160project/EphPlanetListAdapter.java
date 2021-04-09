@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +20,7 @@ public class EphPlanetListAdapter extends RecyclerView.Adapter<EphPlanetListAdap
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItem = layoutInflater.inflate(R.layout.list_item, parent, false);
+        View listItem = layoutInflater.inflate(R.layout.eph_list_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);
         return viewHolder;
     }
@@ -29,11 +28,14 @@ public class EphPlanetListAdapter extends RecyclerView.Adapter<EphPlanetListAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final EphPlanetListData myListData = planetList[position];
+        PersistentVariables persistentVar = new PersistentVariables();
         holder.textView.setText(planetList[position].getPlanetName());
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"click on item: "+myListData.getPlanetName(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(view.getContext(),"click on item: "+myListData.getPlanetName(),Toast.LENGTH_LONG).show();
+                persistentVar.setPlanet(myListData.getPlanetSweNum());
+
             }
         });
     }

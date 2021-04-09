@@ -17,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -43,7 +45,7 @@ public class EphemerisCalculator extends AppCompatActivity {
     private TextView txtDeclination;
     private TextView txtLatitude;
     private TextView txtLongitude;
-    private TextView txtGeneralOutput;
+    private TextView txtPlanetOutput;
 
     FusedLocationProviderClient mFusedLocationClient;
     int PERMISSION_ID=44;
@@ -58,15 +60,22 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         EphPlanetListData[] ephPlanetList = new EphPlanetListData[] {
                 new EphPlanetListData("Sol", SweConst.SE_SUN),
-                new EphPlanetListData("Mercury", SweConst.SE_MERCURY)
+                new EphPlanetListData("Mercury", SweConst.SE_MERCURY),
+                new EphPlanetListData("Venus", SweConst.SE_VENUS),
+                new EphPlanetListData("Mars", SweConst.SE_MARS),
+                new EphPlanetListData("Jupiter", SweConst.SE_JUPITER),
+                new EphPlanetListData("Saturn", SweConst.SE_SATURN),
+                new EphPlanetListData("Uranus", SweConst.SE_URANUS),
+                new EphPlanetListData("Neptune", SweConst.SE_NEPTUNE),
+                new EphPlanetListData("Pluto", SweConst.SE_PLUTO)
         };
 
         // crashes somewhere in the next 5 lines
-        /*RecyclerView ephRecyclerView = (RecyclerView) findViewById(R.id.ephRecyclerView);
+        RecyclerView ephRecyclerView = (RecyclerView) findViewById(R.id.ephRecyclerView);
         EphPlanetListAdapter adapter = new EphPlanetListAdapter((ephPlanetList));
         ephRecyclerView.setHasFixedSize(true);
-        ephRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
-        //ephRecyclerView.setAdapter(adapter);  // this line crashes the app. No idea why, but it does.
+        ephRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ephRecyclerView.setAdapter(adapter);
 
         txtElevation = (TextView) findViewById(R.id.textElevation);
         txtAzimuth = (TextView) findViewById(R.id.textAzimuth);
@@ -75,21 +84,22 @@ public class EphemerisCalculator extends AppCompatActivity {
         txtLatitude = (TextView) findViewById(R.id.editTextLatitude);
         txtLongitude = (TextView) findViewById(R.id.editTextLongitude);
 
-        txtGeneralOutput = (TextView) findViewById(R.id.generalOutputTextView);
+        txtPlanetOutput = (TextView) findViewById(R.id.planetOutputTextView);
 
         txtLatitude.setText("" + latitude);
         txtLongitude.setText("" + longitude);
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        //mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        getLastLocation();
-        calculateAzEl(null);
+        //getLastLocation();
+        //calculateAzEl(null);
     }
 
     public void calculateAzEl(View view) {
         String azString;
         String elString;
 
+        PersistentVariables persistentVar = new PersistentVariables();
         double[] azel = new double[4];
 
         sd = EphemerisCalculatorUtility.timeNow();
@@ -98,8 +108,8 @@ public class EphemerisCalculator extends AppCompatActivity {
         longitude = Double.parseDouble(txtLongitude.getText().toString());
 
         // set body (hard code for now to Mars)
-        planet = SweConst.SE_MARS;
-        txtGeneralOutput.setText("Mars");
+        planet = persistentVar.getPlanet();
+        txtPlanetOutput.setText("" + planet);
 
         EphemerisCalculatorUtility.calcAzEl(getApplicationContext(), planet, sd, latitude, longitude, azel);
 
@@ -218,7 +228,7 @@ public class EphemerisCalculator extends AppCompatActivity {
     }
 
     public void updateLocation(View view) {
-        //requestNewLocationData();
-        getLastLocation();
+        //requestNewLocationData(); // do not use
+        //getLastLocation();
     }
 }
