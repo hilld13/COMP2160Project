@@ -10,26 +10,28 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class EphPlanetListAdapter extends RecyclerView.Adapter<EphPlanetListAdapter.ViewHolder> {
 
-    private EphPlanetListData[] planetList;
+    private ArrayList<EphPlanetListData> planetList;
 
-    public EphPlanetListAdapter(EphPlanetListData[] planetList) {
+    public EphPlanetListAdapter(ArrayList<EphPlanetListData> planetList) {
         this.planetList = planetList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItem = layoutInflater.inflate(R.layout.list_item, parent, false);
+        View listItem = layoutInflater.inflate(R.layout.eph_list_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final EphPlanetListData myListData = planetList[position];
-        holder.textView.setText(planetList[position].getPlanetName());
+        EphPlanetListData myListData = planetList.get(position);
+        holder.textView.setText(planetList.get(position).getPlanetName());
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,7 +42,7 @@ public class EphPlanetListAdapter extends RecyclerView.Adapter<EphPlanetListAdap
 
     @Override
     public int getItemCount() {
-        return planetList.length;
+        return planetList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,7 +51,7 @@ public class EphPlanetListAdapter extends RecyclerView.Adapter<EphPlanetListAdap
         public RelativeLayout relativeLayout;
         public ViewHolder(View itemView) {
             super(itemView);
-            this.textView = (TextView) itemView.findViewById(R.id.textView);
+            textView = itemView.findViewById(R.id.eph_item);
             relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout);
         }
     }

@@ -17,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -25,6 +27,8 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.util.ArrayList;
 
 import swisseph.SweConst;
 import swisseph.SweDate;
@@ -56,17 +60,16 @@ public class EphemerisCalculator extends AppCompatActivity {
 
         new CopyAssetfiles(".*\\.se1", getApplicationContext()).copy();
 
-        EphPlanetListData[] ephPlanetList = new EphPlanetListData[] {
-                new EphPlanetListData("Sol", SweConst.SE_SUN),
-                new EphPlanetListData("Mercury", SweConst.SE_MERCURY)
-        };
+        ArrayList<EphPlanetListData> ephPlanetList = new ArrayList<>();
+        ephPlanetList.add(new EphPlanetListData("Sol", SweConst.SE_SUN));
+        ephPlanetList.add(new EphPlanetListData("Mercury", SweConst.SE_MERCURY));
 
         // crashes somewhere in the next 5 lines
-        /*RecyclerView ephRecyclerView = (RecyclerView) findViewById(R.id.ephRecyclerView);
-        EphPlanetListAdapter adapter = new EphPlanetListAdapter((ephPlanetList));
+        RecyclerView ephRecyclerView = (RecyclerView) findViewById(R.id.ephRecyclerView);
+        EphPlanetListAdapter adapter = new EphPlanetListAdapter(ephPlanetList);
         ephRecyclerView.setHasFixedSize(true);
-        ephRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
-        //ephRecyclerView.setAdapter(adapter);  // this line crashes the app. No idea why, but it does.
+        ephRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ephRecyclerView.setAdapter(adapter);  // this line crashes the app. No idea why, but it does.
 
         txtElevation = (TextView) findViewById(R.id.textElevation);
         txtAzimuth = (TextView) findViewById(R.id.textAzimuth);
