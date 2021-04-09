@@ -94,4 +94,41 @@ public class EphemerisCalculatorUtility extends AppCompatActivity {
         azel[3] = xp[1];
 
     }
+
+    public static String GetFuzzyInstructions(int azimuth, int elevation) {
+        String fuzzyInstructions = "";
+
+        if (elevation < 0)
+            return "Not visible - Below the Horizon";
+
+        if (azimuth <  22.5)
+            fuzzyInstructions = "Look North";
+        else if (azimuth < 67.5)
+            fuzzyInstructions = "Look North East";
+        else if (azimuth < 112.5)
+            fuzzyInstructions = "Look East";
+        else if (azimuth < 157.5)
+            fuzzyInstructions = "Look South East";
+        else if (azimuth < 202.5)
+            fuzzyInstructions = "Look South";
+        else if (azimuth < 247.5)
+            fuzzyInstructions = "Look South West";
+        else if (azimuth < 292.5)
+            fuzzyInstructions = "Look West";
+        else if (azimuth < 337.5)
+            fuzzyInstructions = "Look North West";
+        else if (azimuth <= 360.0)
+            fuzzyInstructions = "Look North";
+
+        if (elevation < 10)
+            fuzzyInstructions += " and near the horizon";
+        else if (elevation < 25)
+            fuzzyInstructions += " and low in the sky";
+        else if (elevation < 60)
+            fuzzyInstructions += " and roughly half way up the sky.";
+        else if (elevation < 90)
+            fuzzyInstructions += " and really high up in the sky.";
+
+        return fuzzyInstructions;
+    }
 }
