@@ -51,7 +51,7 @@ public class EphPlanetListAdapter extends RecyclerView.Adapter<EphPlanetListAdap
         public RelativeLayout relativeLayout;
         public ViewHolder(View itemView) {
             super(itemView);
-            this.textView = (TextView) itemView.findViewById(R.id.textView);
+            this.textView = (TextView) itemView.findViewById(R.id.eph_item);
             relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout);
         }
     }
