@@ -81,7 +81,7 @@ public class EphemerisCalculatorUtility extends AppCompatActivity {
 
         sw.swe_azalt(sd.getJulDay(), SweConst.SE_EQU2HOR, geopos, 0, 20, xin, xaz);
 
-        azimuth = xaz[0] + 180.0;      // azimuth is incorrectly(?) calculated as south being 0 instead of 180.
+        azimuth = xaz[0] + 180.0;      // correct for azimuth incorrectly calculated as south being 0 instead of 180.
         if (azimuth >= 360.0)  azimuth -= 360.0; // and if we roll over 360, then fix that too.
 
         elevation = xaz[1];

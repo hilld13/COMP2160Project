@@ -70,7 +70,6 @@ public class EphemerisCalculator extends AppCompatActivity {
                 new EphPlanetListData("Pluto", SweConst.SE_PLUTO)
         };
 
-        // crashes somewhere in the next 5 lines
         RecyclerView ephRecyclerView = (RecyclerView) findViewById(R.id.ephRecyclerView);
         EphPlanetListAdapter adapter = new EphPlanetListAdapter((ephPlanetList));
         ephRecyclerView.setHasFixedSize(true);
@@ -89,8 +88,10 @@ public class EphemerisCalculator extends AppCompatActivity {
         txtLatitude.setText("" + latitude);
         txtLongitude.setText("" + longitude);
 
+        // commented out the next statement due to the UI becoming unresponsive.
         //mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        // commented out the next two statements because we don't have a default planet set.
         //getLastLocation();
         //calculateAzEl(null);
     }
@@ -107,7 +108,7 @@ public class EphemerisCalculator extends AppCompatActivity {
         latitude = Double.parseDouble(txtLatitude.getText().toString());
         longitude = Double.parseDouble(txtLongitude.getText().toString());
 
-        // set body (hard code for now to Mars)
+        // set body
         planet = persistentVar.getPlanet();
         txtPlanetOutput.setText("" + planet);
 
@@ -160,16 +161,15 @@ public class EphemerisCalculator extends AppCompatActivity {
     @SuppressLint("MissingPermission")
     private void requestNewLocationData() {
 
-        // Initializing LocationRequest
-        // object with appropriate methods
+        // Initializing LocationRequest object with appropriate methods
+        // LocationRequest() is deprecated. No idea what the replacement is or what it will do to this code.
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setInterval(5);
         mLocationRequest.setFastestInterval(0);
         mLocationRequest.setNumUpdates(1);
 
-        // setting LocationRequest
-        // on FusedLocationClient
+        // setting LocationRequest on FusedLocationClient
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
     }
@@ -188,9 +188,7 @@ public class EphemerisCalculator extends AppCompatActivity {
     private boolean checkPermissions() {
         return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
 
-        // If we want background location
-        // on Android 10.0 and higher,
-        // use:
+        // If we want background location on Android 10.0 and higher, use:
         // ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
@@ -231,6 +229,6 @@ public class EphemerisCalculator extends AppCompatActivity {
 
     public void updateLocation(View view) {
         //requestNewLocationData(); // do not use
-        //getLastLocation();
+        //getLastLocation();  // commented out because of unresponsive UI issue.
     }
 }
