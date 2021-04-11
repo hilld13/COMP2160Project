@@ -120,6 +120,8 @@ public class EphemerisCalculator extends AppCompatActivity {
         elString = String.format("Elevation: %.2f", azel[1]);
         txtAzimuth.setText(azString);
         txtElevation.setText(elString);
+
+        txtPlanetOutput.setText(EphemerisCalculatorUtility.GetFuzzyInstructions(azel[0], azel[1]));
     }
 
     @SuppressLint("MissingPermission")

@@ -95,7 +95,7 @@ public class EphemerisCalculatorUtility extends AppCompatActivity {
 
     }
 
-    public static String GetFuzzyInstructions(int azimuth, int elevation) {
+    public static String GetFuzzyInstructions(double azimuth, double elevation) {
         String fuzzyInstructions = "";
 
         if (elevation < 0)
@@ -127,7 +127,7 @@ public class EphemerisCalculatorUtility extends AppCompatActivity {
         else if (elevation < 60)
             fuzzyInstructions += " and roughly half way up the sky.";
         else if (elevation < 90)
-            fuzzyInstructions += " and really high up in the sky.";
+            fuzzyInstructions += " and almost straight up.";
 
         return fuzzyInstructions;
     }
