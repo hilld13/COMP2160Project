@@ -9,28 +9,18 @@
 
     <Button
         android:id="@+id/compass_btt"
-        android:layout_width="138dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="208dp"
-        android:backgroundTint="#FFFFFF"
+        android:layout_width="131dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="212dp"
+        android:background="@drawable/db_gradient"
+        android:fontFamily="@font/aldrich"
         android:onClick="activityCompass"
         android:text="@string/compass_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/list_planets_btt"
-        android:layout_width="138dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="40dp"
-        android:onClick="activityPlanetData"
-        android:text="@string/planets_list_text"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compass_btt" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnEphCalc"
@@ -38,10 +28,45 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="180dp"
+        android:background="@drawable/db_gradient"
+        android:fontFamily="@font/aldrich"
         android:onClick="activityEphemerisCalculator"
         android:text="Ephemeris Calculator"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_planets_btt" />
+        app:layout_constraintTop_toBottomOf="@+id/list_planets_btt"
+        app:layout_constraintVertical_bias="0.512" />
+
+    <Button
+        android:id="@+id/list_planets_btt"
+        android:layout_width="139dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/db_gradient"
+        android:fontFamily="@font/aldrich"
+        android:onClick="activityPlanetData"
+        android:text="@string/planets_list_text"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compass_btt" />
+
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:fontFamily="@font/aldrich"
+        android:text="@string/app_title"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

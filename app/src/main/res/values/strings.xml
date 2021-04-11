@@ -12,4 +12,5 @@
     <string name="declination_text">Declination</string>
     <string name="item_btn">More Info</string>
     <string name="search_for_planet">  Search for planet</string>
+    <string name="app_title">Stargazer</string>
 </resources>
